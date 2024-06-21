@@ -36,7 +36,7 @@ To request a CVE, visit [MITRE CVE Request Form](https://cveform.mitre.org/) and
 2. **Request Details:** Specify the number of IDs you want to request (usually 1 per vulnerability). Check the boxes indicating that the vendor is not CNA-covered and that the exploit does not already have a CVE.
 
 [mitre_form4.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/mitre_form4.jpg)
-3. **Information:** Fill in the information about your exploit. Include a clear and concise description using the specific wording and format required by MITRE. Refer to the [CVE Project Key Details Phrasing](http://cveproject.github.io/docs/content/key-details-phrasing.pdf) for guidance. The format should be: 
+3. **Information:** Fill in the information about your exploit. Include a clear and concise description using the specific wording and format required by MITRE. Refer to the [CVE Project Key Details Phrasing](https://cveproject.github.io/docs/content/key-details-phrasing.pdf) for guidance. The format should be: 
 
    `[VULNTYPE] in [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] allows [ATTACKER] to [IMPACT] via [VECTOR]`.
 
