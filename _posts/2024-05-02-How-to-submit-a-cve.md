@@ -30,13 +30,16 @@ If the vendor is a CNA and responds to your messages, you can work with them to 
 To request a CVE, visit [MITRE CVE Request Form](https://cveform.mitre.org/) and fill in the form details. Here's a step-by-step guide on how to complete the form:
 
 ![mitre_form2.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/mitre_form2.jpg)
-- **Select Request Type:** Set the field to 'Report Vulnerability/Request CVE ID' and enter your email address below.
+> **Select Request Type:** Set the field to 'Report Vulnerability/Request CVE ID' and enter your email address below.
+{: .prompt-info }
 
 ![mitre_form3.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/mitre_form3.jpg)
-- **Request Details:** Specify the number of IDs you want to request (usually 1 per vulnerability). Check the boxes indicating that the vendor is not CNA-covered and that the exploit does not already have a CVE.
+> **Request Details:** Specify the number of IDs you want to request (usually 1 per vulnerability). Check the boxes indicating that the vendor is not CNA-covered and that the exploit does not already have a CVE.
+{: .prompt-info }
 
 ![mitre_form4.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/mitre_form4.jpg)
-- **Information:** Fill in the information about your exploit. Include a clear and concise description using the specific wording and format required by MITRE. Refer to the [CVE Project Key Details Phrasing](https://cveproject.github.io/docs/content/key-details-phrasing.pdf) for guidance. The format should be: 
+> **Information:** Fill in the information about your exploit. Include a clear and concise description using the specific wording and format required by MITRE. Refer to the [CVE Project Key Details Phrasing](https://cveproject.github.io/docs/content/key-details-phrasing.pdf) for guidance. The format should be: 
+{: .prompt-info }
 
    ```[VULNTYPE] in [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] allows [ATTACKER] to [IMPACT] via [VECTOR]```.
 
@@ -45,7 +48,8 @@ To request a CVE, visit [MITRE CVE Request Form](https://cveform.mitre.org/) and
    ```Cross-site scripting (XSS) vulnerability in [COMPONENT] in [VENDOR] [PRODUCT] [VERSION] allows remote attackers to inject arbitrary web script or HTML via the [PARAM] parameter.```
   
 
-- **Submit the Form:** After completing the form, submit it. You will receive a confirmation email that your request has been received. After a few days (around 15 days for me), you will receive a RESERVED CVE number.
+> **Submit the Form:** After completing the form, submit it. You will receive a confirmation email that your request has been received. After a few days (around 15 days for me), you will receive a RESERVED CVE number.
+{: .prompt-info }
 
 ## Request for Publishing
 
@@ -54,7 +58,8 @@ Examples can be found on my GitHub at [Excis3 CVE Disclosure](https://github.com
 After creating the disclosure report, return to the [MITRE CVE Request Form](https://cveform.mitre.org/) and select 'Notify CVE about a publication'. 
 
 ![mitre_form5.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/mitre_form5.jpg)
-Fill in your email address, the link to your advisory, and the reserved CVE number. You can also provide additional information or update the original description if needed.
+> Fill in your email address, the link to your advisory, and the reserved CVE number. You can also provide additional information or update the original description if needed.
+{: .prompt-info }
 
 After submitting the form, you will receive a notification that your CVE is published within a few days.
 
