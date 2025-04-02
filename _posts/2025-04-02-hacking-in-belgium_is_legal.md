@@ -17,15 +17,16 @@ For just over two years now, it's been legally permitted to conduct security res
 This is a huge step forward for the ethical hacking community and an exciting opportunity for professionals like myself. As a Belgian citizen and security researcher, this opens up new avenues for contributing to a safer digital landscape.
 
 In this post, I’ll walk you through the essentials:
-* What’s allowed
-* What’s off-limits
-* And how to report vulnerabilities the right way
+1. **What’s allowed**
+2. **What’s off-limits**
+3. **And how to report vulnerabilities the right way**
 
 
 ## Rules of the game
 
-The Centre for Cybersecurity Belgium (CCB) has published an official [framework for vulnerability disclosure](https://ccb.belgium.be/cert/vulnerability-reporting-ccb). It enables responsible researchers to investigate vulnerabilities on Belgian systems within legal boundaries.
+![logo-ccb.svg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/logo-ccb.svg)
 
+The Centre for Cybersecurity Belgium (**CCB**) has published an official [framework for vulnerability disclosure](https://ccb.belgium.be/cert/vulnerability-reporting-ccb). It enables responsible researchers to investigate vulnerabilities on Belgian systems within legal boundaries.
 
 > **In Short:** You can legally hack on networks and information systems located in Belgium, but only if you stick to the rules.
 {: .prompt-info }
@@ -51,8 +52,12 @@ Even with legal permission, some activities are strictly off-limits:
 
 ## How to report
 
+![report.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/report.jpg)
+
 So, you’ve discovered a potential vulnerability—great job! Now comes the important part: responsibly reporting it.
-Before jumping into emails and forms, let’s first determine the correct reporting path. Here’s a step-by-step guide to make sure your report is both effective and compliant with the Belgian legal framework.
+Before jumping into emails and forms, let’s first determine the correct reporting path. Here’s a step-by-step guide to make sure your report is both effective and compliant with the **Belgian legal framework**.
+
+### Steps to folllow:
 
 **Step 1: Check for a Vulnerability Disclosure Program**
 Start by verifying if the target organization has a vulnerability disclosure policy in place.
@@ -157,4 +162,5 @@ Belgium is leading by example in enabling ethical hacking under a responsible fr
 If you’re planning to explore this domain, I highly recommend checking out the [official guidelines by the CCB](https://ccb.belgium.be/cert/vulnerability-reporting-ccb)and ensuring you’re fully compliant.
 
 Stay curious, stay ethical.
-Excis3
+
+**Excis3**
