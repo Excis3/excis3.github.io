@@ -155,10 +155,12 @@ Kind regards,
 ```
 
 **(Optional) Encrypting with PGP**
+
 The CCB previously recommended encrypting your report with PGP, though this is reportedly no longer mandatory. Still, if you prefer an extra layer of security you can find the public key at the official page: [CCB sending secure messages](https://ccb.belgium.be/cert/send-encrypted-message). There you can download the PGP key you need to encrypt your mail.
 
 
 ## Conclusion
+
 Belgium is leading by example in enabling ethical hacking under a responsible framework. This is a fantastic opportunity to contribute to cybersecurity in a legal and constructive way.
 If you’re planning to explore this domain, I highly recommend checking out the [official guidelines by the CCB](https://ccb.belgium.be/cert/vulnerability-reporting-ccb)and ensuring you’re fully compliant.
 
