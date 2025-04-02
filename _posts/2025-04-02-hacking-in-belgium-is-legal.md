@@ -13,7 +13,7 @@ image:
   path: /Excis3/excis3.github.io/main/media/ccb.png
 ---
 
-For just over two years now, it's been legally permitted to conduct security research on digital assets located in Belgium.
+For just over two years now, it's been legally permitted to conduct security research on digital assets **located in Belgium**.
 This is a huge step forward for the ethical hacking community and an exciting opportunity for professionals like myself. As a Belgian citizen and security researcher, this opens up new avenues for contributing to a safer digital landscape.
 
 In this post, I’ll walk you through the essentials:
@@ -54,12 +54,13 @@ Even with legal permission, some activities are strictly off-limits:
 
 ![report.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/report.jpg)
 
-So, you’ve discovered a potential vulnerability—great job! Now comes the important part: responsibly reporting it.
+So, you’ve discovered a potential vulnerability, great job! Now comes the important part: responsibly reporting it.
 Before jumping into emails and forms, let’s first determine the correct reporting path. Here’s a step-by-step guide to make sure your report is both effective and compliant with the **Belgian legal framework**.
 
-### Steps to folllow:
+### Steps to follow:
 
 **Step 1: Check for a Vulnerability Disclosure Program**
+
 Start by verifying if the target organization has a vulnerability disclosure policy in place.
 A good first stop is to check if the domain has a security.txt file. This file typically contains instructions on how to report vulnerabilities securely.
 
