@@ -24,7 +24,7 @@ In this post, I’ll walk you through the essentials:
 
 ## Rules of the game
 
-![logo-ccb.svg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/logo-ccb.svg)
+![logo-ccb.svg](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/logo_ccb.svg)
 
 The Centre for Cybersecurity Belgium (**CCB**) has published an official [framework for vulnerability disclosure](https://ccb.belgium.be/cert/vulnerability-reporting-ccb). It enables responsible researchers to investigate vulnerabilities on Belgian systems within legal boundaries.
 
@@ -52,7 +52,7 @@ Even with legal permission, some activities are strictly off-limits:
 
 ## How to report
 
-![report.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/main/media/report.jpg)
+![report.jpg](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/report.jpg)
 
 So, you’ve discovered a potential vulnerability—great job! Now comes the important part: responsibly reporting it.
 Before jumping into emails and forms, let’s first determine the correct reporting path. Here’s a step-by-step guide to make sure your report is both effective and compliant with the **Belgian legal framework**.
