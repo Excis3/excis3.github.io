@@ -22,9 +22,9 @@ First, I’ll show you how to manually claim the subdomain via the Azure portal.
 
 ---
 
-## Taking Over an `azurewebsites.net` Application
+## Taking Over an azurewebsites.net Application
 
-Let’s say you’ve identified a CNAME DNS record pointing to an unclaimed Azure Web App. In this case, we’ll use:
+Let’s say you’ve identified a CNAME DNS record pointing to an unclaimed **Azure Web App**. In this case, we’ll use:
 
 - **Domain:** `subdomain.excis3.be`
 - **Azure App:** `sdto-poc-excise.azurewebsites.net`
@@ -60,9 +60,10 @@ Once the name is verified as available, proceed to configure the application for
 - Select **Python 3.13** as the runtime stack.
 - Leave the OS as **Linux** (a cost-effective choice).
 - Choose your preferred **region**.
-- For pricing, select **Basic B1**. Avoid the Free plan—it doesn’t allow custom domains.
+- For pricing, select **Basic B1**. Avoid the Free plan, it doesn’t allow custom domains.
 
-> 💡 Ignore the screenshot below showing the Free plan. Use Basic B1 for full functionality.
+> **Remark**: Ignore the screenshot below showing the Free plan. Use **Basic B1** for full functionality.
+> {: .prompt-info }
 
 ![6_Pricingplan.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/6_Pricingplan.png)
 
@@ -70,7 +71,7 @@ With everything set up, click **Review + Create**, then **Create**. Azure will b
 
 ![7_createapp.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/7_createapp.png)
 
-At this point, visiting the app URL will display a 404 error. That’s expected—no content has been deployed yet.
+At this point, visiting the app URL will display a 404 error. That’s expected, no content has been deployed yet.
 
 ![8_404page.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/8_404page.png)
 
@@ -78,7 +79,7 @@ At this point, visiting the app URL will display a 404 error. That’s expected�
 
 ### Linking Your Custom Domain
 
-In the **Overview** tab of your Web App, look for the **Add custom domain** option in the middle of the page. Click it to add your domain (e.g., `subdomain.excis3.be`).
+In the **Overview** tab of your **Web App**, look for the **Add custom domain** option in the middle of the page. Click it to add your domain (e.g., `subdomain.excis3.be`).
 
 On the domain setup page:
 
@@ -88,7 +89,7 @@ On the domain setup page:
 
 ![9_customdomain.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/9_customdomain.png)
 
-You may be prompted to add a TXT record for domain verification. This is a protective feature, but often neglected—making SDTOs possible. Once the domain is validated, it will appear with a green status.
+You may be prompted to add a TXT record for domain verification. This is a protective feature, but often neglected, making SDTOs possible. Once the domain is validated, it will appear with a green status.
 
 ![10_validation.png](https://raw.githubusercontent.com/Excis3/excis3.github.io/refs/heads/main/media/10_validation.png)
 
@@ -141,10 +142,58 @@ Once you’ve validated the PoC and documented the takeover, don’t forget to c
 
 Code snipits to take over with python
 
-## Report template for bugbounty hunters
+## Reporting Subdomain Takeovers in Bug Bounty
 
-Template
+In bug bounty programs, subdomain takeovers are often considered valid findings, even if the affected domain isn't explicitly listed as in-scope. According to the CVSS scoring system, a basic subdomain takeover typically impacts **Integrity**, resulting in a **7.5 (High)** severity rating.
+
+When submitting a report, it’s crucial to **fully take over the subdomain** and host a clear Proof of Concept (PoC). This helps the triage team validate the issue quickly. As a best practice, consider archiving the PoC in the Wayback Machine and taking a screenshot to serve as backup evidence in case the service is taken down before triage.
+
+Below is the simple yet effective **reporting template** I use for takeover submissions. It's designed to be concise, reproducible, and triager-friendly.
+
+```
+# Intro
+Good afternoon team,
+Thank you for triaging my report, I hope you enjoy this beautiful day.
+I have found a subdomain takeover on one of the domains of this program.
+
+# Triage Section
+## Info
+**Domain:** 
+**CNAME:** 
+**Service:**
+
+## Poc
+Visit the main website: 
+` DOMAIN `
+
+Wayback Link: 
+LINK
+
+## Proof of reproduction
+IMAGE
+
+# Company section
+## Impact
+A subdomain takeover occurs when a subdomain (e.g., sub.example.com) points to a service (like a web host or a cloud service) that has been removed or deleted. This allows attackers to claim the subdomain and host malicious content on it, potentially damaging your brand and endangering your users.
+
+
+## Developer and remediation Notes
+Remove the CNAME record that points to the service.
+
+## References
+https://book.hacktricks.xyz/pentesting-web/domain-subdomain-takeover
+
+Kind regards,
+
+NAME
+```
 
 ## Conclusion
 
-Conclusion
+Subdomain takeovers remain a high-impact, often overlooked issue, especially in cloud environments like Azure. By identifying dangling DNS records and re-registering unclaimed resources, attackers can easily hijack subdomains and serve malicious content under a trusted domain name.
+
+Whether you're automating the process or testing manually, always ensure you follow responsible disclosure practices and provide clear evidence when reporting to programs.
+
+Stay safe, hack responsibly, and happy hunting!
+
+Excis3
