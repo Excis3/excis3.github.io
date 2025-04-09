@@ -188,7 +188,7 @@ Assign access to **User, group, or service principal**, search for the account y
 Your service principal is ready to use with the Azure CLI or Python scripts.
 
 ### The Python script for the takeover
-This is a basic script, so you will get the idea. You can optimize it as you like.
+This is a basic Python script that will create the asset for you. This is to get you started on automation, please opimize where needed.
 
 ```bash
 import random
