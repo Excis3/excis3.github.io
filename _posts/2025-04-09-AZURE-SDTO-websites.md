@@ -140,7 +140,11 @@ Once you’ve validated the PoC and documented the takeover, don’t forget to c
 
 ## Takeovers with Python
 
-Code snipits to take over with python
+- checking
+- taking over
+- hosting a PoC
+- cleaning up
+- checking active services
 
 ## Reporting Subdomain Takeovers in Bug Bounty
 
@@ -150,7 +154,7 @@ When submitting a report, it’s crucial to **fully take over the subdomain** an
 
 Below is the simple yet effective **reporting template** I use for takeover submissions. It's designed to be concise, reproducible, and triager-friendly.
 
-```
+```bash
 # Intro
 Good afternoon team,
 Thank you for triaging my report, I hope you enjoy this beautiful day.
