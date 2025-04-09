@@ -10,7 +10,7 @@ tags:
 pin: true
 mermaid: true
 image:
-  path: /Excis3/excis3.github.io/main/media/mitre.webp
+  path: /Excis3/excis3.github.io/main/media/mitre.png
 ---
 
 I recently discovered my first vulnerability in a software and had no idea how or where to request a CVE. After some investigation, I realized that since the exploit wasn't part of a CVE numbering authority (CNA), I needed to report it myself. The resources I found were scattered and incomplete, so this blog post aims to provide a comprehensive guide on the entire process.
