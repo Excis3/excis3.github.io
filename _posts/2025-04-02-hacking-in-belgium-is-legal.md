@@ -28,7 +28,7 @@ In this post, I’ll walk you through the essentials:
 
 The Centre for Cybersecurity Belgium (**CCB**) has published an official [framework for vulnerability disclosure](https://ccb.belgium.be/cert/vulnerability-reporting-ccb). It enables responsible researchers to investigate vulnerabilities on Belgian systems within legal boundaries.
 
-> **In Short:** You can legally hack on networks and information systems located in Belgium, but only if you stick to the rules.
+> **In Short:** You can legally hack on networks and information systems **located** in Belgium, but only if you stick to the rules. The Part where it needs to be LOCATED in Belgium is key here. Not all .be TLD's are located in Belgium for example.
 {: .prompt-info }
 
 
