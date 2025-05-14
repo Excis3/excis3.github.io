@@ -37,7 +37,7 @@ Below are some examples of reports and explanations of why they should not be su
 2. The attacker visits the victim’s computer and goes to the "Change Password" section.
 3. The attacker can change the password without entering the current password.
 ```
-**Recap**: This might be an issue with a penetration test, but not with bugbounty. An attacker first needs access to the computer and this is most of the time out of scope as the attacker needs physical access to the device. This is mostly seen as a best practice case but not a security issue.
+**Recap**: This might be relevant in a **penetration testing** context, but not in **bug bounty**. In this case, the attacker would first need access to the victim’s computer, which typically requires physical access, and that’s usually out of scope for most bug bounty programs. At best, this is considered a **security best practice**, not an actual vulnerability with real-world impact.
 
 
 
@@ -46,8 +46,8 @@ Below are some examples of reports and explanations of why they should not be su
 1. Go to the following page and you will see an admin login page ( www.xyz.xyz/wp-admin )
 2. an attacker can access the admin page
 ```
-**Recap:** An Admin page or login page, or pages that require to log-in is not considered an issue as there is no impact. They suppose to be there to protect the pages behind the login-page.
-You always need to show impact of what an attacker can do with the information. For example, found some credentials somewhere and they work on the log-in page, that would be a valid security issue.
+**Recap:** Simply finding an **admin page, login page, or any page** that requires authentication is not a security issue on its own. These pages are meant to be protected, that’s their entire purpose. Just identifying their existence doesn't demonstrate any real risk.
+To submit a valid report, you must **show actual impact**. For example, if you discover leaked credentials and they successfully log in to one of those pages, that becomes a legitimate security issue, because you’ve proven what an attacker could do with the information.
 
 
 
@@ -57,7 +57,9 @@ You always need to show impact of what an attacker can do with the information. 
 2. Log in with the attacker user.
 2. Copy the cookies of the victim and replace them with the attacker cookies.
 ```
-**Recap:** This is how sessions work and basicly all authentication. As a user you log in to an application and your username and password are transferred to a session. This session represents your username and password for further use of the application. When you can steal a session you have access to the account. In this case there is no way an attacker can get the victim's session cookie.
+**Recap:** This is how sessions, and basically all authentication systems, work: when a user logs into an application, their username and password are exchanged for a **session token** (usually stored as a cookie). This session token represents the user for the rest of their interaction with the app.
+If an attacker manages to steal that session token, they can effectively take over the account, no password needed.
+However, in the case described, there’s no way for an attacker to access the victim’s session cookie, so there’s **no real vulnerability**. Without a method to obtain the session, there's no impact to report.
 
 
 ### Title: Host header injection
@@ -66,9 +68,9 @@ You always need to show impact of what an attacker can do with the information. 
 2. Now send that request to repeater and replace the host header with 'google.com'
 3. Send the request and see that you get redirected to google.com
 ```
-**Recap:** This is a host header injection with no exploit scenario or impact. This can't be used as an open redirect or does not affect other users. Host header injections get reported a lot, but only a few are valid. This requires some deeper researche and understanding of the application.
-
-
+**Recap:** This is a host header injection, but without any exploit scenario or demonstrated impact. It can’t be used for an open redirect, doesn’t affect other users, and doesn’t lead to any meaningful security consequence.
+**Host header injections** are reported frequently, but only a small number are actually valid. To be considered a real issue, the injection must result in something exploitable, like bypassing security checks, triggering password reset links to the wrong host, or enabling cache poisoning.
+Validating this kind of bug often requires deeper research and a solid understanding of how the application handles headers behind the scenes.
 
 
 
