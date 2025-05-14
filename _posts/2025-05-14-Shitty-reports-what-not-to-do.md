@@ -31,19 +31,42 @@ In this blog post:
 
 Below are some examples of reports and explanations of why they should not be submitted. These are the kinds of reports that get rejected, usually because they’re incomplete, show no real impact, or, frankly, just don’t make any sense.
 
-### Title: 
+### Title: Changing the password without authentication
+```
+1. The victim user is logged in. (Example: The user left their computer open.)
+2. The attacker visits the victim’s computer and goes to the "Change Password" section.
+3. The attacker can change the password without entering the current password.
+```
+**Recap**: This might be an issue with a penetration test, but not with bugbounty. An attacker first needs access to the computer and this is most of the time out of scope as the attacker needs physical access to the device. This is mostly seen as a best practice case but not a security issue.
 
 
 
-### Title: 
+### Title: Publicly Accessible Admin page
+```
+1. Go to the following page and you will see an admin login page ( www.xyz.xyz/wp-admin )
+2. an attacker can access the admin page
+```
+**Recap:** An Admin page or login page, or pages that require to log-in is not considered an issue as there is no impact. They suppose to be there to protect the pages behind the login-page.
+You always need to show impact of what an attacker can do with the information. For example, found some credentials somewhere and they work on the log-in page, that would be a valid security issue.
 
 
 
-### Title:
+### Title: Session hijacking to ATO
+```
+1. log in with the victim user
+2. Log in with the attacker user.
+2. Copy the cookies of the victim and replace them with the attacker cookies.
+```
+**Recap:** This is how sessions work and basicly all authentication. As a user you log in to an application and your username and password are transferred to a session. This session represents your username and password for further use of the application. When you can steal a session you have access to the account. In this case there is no way an attacker can get the victim's session cookie.
 
 
-
-### Title:
+### Title: Host header injection
+```
+1. Visit the site of the company with Burp.
+2. Now send that request to repeater and replace the host header with 'google.com'
+3. Send the request and see that you get redirected to google.com
+```
+**Recap:** This is a host header injection with no exploit scenario or impact. This can't be used as an open redirect or does not affect other users. Host header injections get reported a lot, but only a few are valid. This requires some deeper researche and understanding of the application.
 
 
 
